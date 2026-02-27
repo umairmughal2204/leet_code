@@ -4,27 +4,48 @@
 
 using namespace std;
 
+// class Solution {
+// public:
+//     int removeElement(vector<int>& nums, int val) {
+//         int s= nums.size();
+//         if(s==0)
+//         {
+//             return 0;
+//         }
+//         for(int i=0;i<s;i++)
+//         {
+//             if(nums[i]==val)
+//             {
+//                 for(int j=i;j<s-1;j++)
+//                 {
+//                 nums[j]=nums[j+1];
+//                 }
+//                 i--;
+//                 s--;
+//             }     
+//         }
+//         return s;
+//     }
+// };
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
-        int s= nums.size();
-        if(s==0)
+       int s= nums.size();
+       if(s==0)
+       {
+        return 0;
+       }
+       int slow=0;
+       for(int i=0;i<s;i++)
+       {
+        if (nums[i]!=val)
         {
-            return 0;
+            nums[slow]=nums[i];
+            slow++;
         }
-        for(int i=0;i<s;i++)
-        {
-            if(nums[i]==val)
-            {
-                for(int j=i;j<s-1;j++)
-                {
-                nums[j]=nums[j+1];
-                }
-                i--;
-                s--;
-            }     
-        }
-        return s;
+
+       }
+       return slow;
     }
 };
 
