@@ -6,6 +6,26 @@ using namespace std;
 
 // This function removes duplicates from a sorted array in-place and returns the new length of the array.
 // using two pointers technique, one slow pointer to keep track of the position of the last unique element and one fast pointer to traverse the array.
+// class Solution {
+// public:
+//     int removeDuplicates(vector<int>& nums) {
+//         if(nums.size()==0)
+//         {
+//             return 0;
+//         }
+//         int slow=0;
+//         for(int i=1;i<nums.size();i++)
+//         {
+//             if(nums[i]!=nums[slow])
+//             {
+//                 slow++;
+//                 nums[slow]=nums[i];
+//             }
+//         }
+//         return slow+1;
+        
+//     }
+// };
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
@@ -13,16 +33,20 @@ public:
         {
             return 0;
         }
-        int slow=0;
-        for(int i=1;i<nums.size();i++)
+        int size=nums.size();
+        for(int i=1;i<size;i++)
         {
-            if(nums[i]!=nums[slow])
+            if(nums[i]==nums[i+1])
             {
-                slow++;
-                nums[slow]=nums[i];
+                for(int j=i+1;j<size-1;j++)
+                {
+                    nums[j]=nums[j+1];
+                }
+                size--;
+                i--;
             }
         }
-        return slow+1;
+        return size;
         
     }
 };
